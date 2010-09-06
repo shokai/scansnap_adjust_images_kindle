@@ -1,0 +1,13 @@
+.DS_Store
+*~
+pkg/*
+ttdb/*
+.fuse*
+config.yaml
+.\#*
+*\#*
+.bundle
+*.gif
+*.jpg
+*.png
+*.bmp
