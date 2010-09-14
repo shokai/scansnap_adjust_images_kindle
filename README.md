@@ -34,9 +34,8 @@ Install dependencies
     % sudo port install boost opencv
 
     # for Ubuntu
-    % sudo apt-get install boost-build bjam
-    % sudo apt-get install libboost-dev libboost-dbg
-    % sudo apt-get install libboost-program-options-dev libboost-filesystem-dev
+    % sudo apt-get install boost-build bjam libboost-dev libboost-dbg libboost-program-options-dev libboost-filesystem-dev
+    % sudo apt-get install libcv-dev libcv1 libcvaux-dev libcvaux1 libhighgui-dev libhighgui1
 
 Make
 ======
