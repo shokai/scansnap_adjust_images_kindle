@@ -42,7 +42,9 @@ IplImage *adjust_image(IplImage *img, program_options::variables_map argmap){
     img_resized = cvCreateImage(cvSize(width, (int)(scale*width)), IPL_DEPTH_8U, 1);
   }
   cvResize(img_bin, img_resized, CV_INTER_LINEAR);
-  
+
+  cvReleaseImage(&img_bin);
+  cvReleaseImage(&img_gray);
   return img_resized;
 }
 
