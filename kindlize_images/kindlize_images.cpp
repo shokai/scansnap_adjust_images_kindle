@@ -10,8 +10,16 @@ using namespace std;
 namespace fs = boost::filesystem;
 
 IplImage *adjust_image(IplImage *img, program_options::variables_map argmap){
-  const int w = img->width;
-  const int h = img->height;
+  int cleft = argmap["cleft"].as<int>();
+  int cright = argmap["cright"].as<int>();
+  int ctop = argmap["ctop"].as<int>();
+  int cbottom = argmap["cbottom"].as<int>();
+
+  const int w = img->width - cleft - cright;
+  const int h = img->height - ctop - cbottom;
+  
+  cvSetImageROI(img, cvRect(cleft, ctop, w, h));
+
   IplImage *img_gray = cvCreateImage(cvSize(w,h), IPL_DEPTH_8U, 1);
   cvCvtColor(img, img_gray, CV_BGR2GRAY);
 
@@ -49,10 +57,10 @@ int main(int argc, char* argv[]) {
     ("threshold,t", program_options::value<int>(), "binarize threshold")
     ("input,i", program_options::value<string>(), "input directory name")
     ("output,o", program_options::value<string>(), "output directory name")
-    ("cleft,cl", program_options::value<int>(), "crop left (pixel)")
-    ("cright,cr", program_options::value<int>(), "crop right (pixel)")
-    ("ctop,ct", program_options::value<int>(), "crop top (pixel)")
-    ("cbottom,cb", program_options::value<int>(), "crop bottom (pixel)");
+    ("cleft", program_options::value<int>(), "crop left (pixel)")
+    ("cright", program_options::value<int>(), "crop right (pixel)")
+    ("ctop", program_options::value<int>(), "crop top (pixel)")
+    ("cbottom", program_options::value<int>(), "crop bottom (pixel)");
   program_options::variables_map argmap;
   program_options::store(parse_command_line(argc, argv, opts), argmap);
   program_options::notify(argmap);
