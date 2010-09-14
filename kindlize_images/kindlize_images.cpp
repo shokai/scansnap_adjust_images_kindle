@@ -43,8 +43,6 @@ IplImage *adjust_image(IplImage *img, program_options::variables_map argmap){
   }
   cvResize(img_bin, img_resized, CV_INTER_LINEAR);
   
-  //IplImage *img_frame = cvCreateImage(cvSize(WIDTH, HEIGHT), IPL_DEPTH_8U, 1);
-  
   return img_resized;
 }
 
