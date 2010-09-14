@@ -5,9 +5,8 @@ adjust images for scansnap to read on kindle
 Require
 =======
 
-* Java 1.5 or higher
-* JRuby 1.5 or higher
-
+* OpenCV 1.0 or higher
+* Boost 1.3.8 or higher
 
 Extract image files from PDF
 =========================
@@ -28,13 +27,32 @@ on Mac OSX or Ubuntu Linux, use pdfimages.
 Others, buy Adobe Acrobat Pro to extract.
 
 
+Install dependencies
+====================
+
+    # for Mac
+    % sudo port install boost opencv
+
+    # for Ubuntu
+    % sudo apt-get install boost-build bjam
+    % sudo apt-get install libboost-dev libboost-dbg
+    % sudo apt-get install libboost-program-options-dev libboost-filesystem-dev
+
+Make
+======
+
+    % cd kindlize_images
+    % make -f Makefile.macosx
+
+
 Adjust Images
 =============
 
-use kindlize_images.rb in this repository.
+use kindlize_images.
 
-    % jruby kindlize_images.rb -help
-    % jruby kindlize_images.rb -i ~/tmp/mybook/ -o ~/tmp/mybook_kindle/ -w 1200 -h 1600 -cl 150 -cr 150 -ct 120 -cb 180 -t 240
+    % mkdir ~/tmp/mybook_kindle
+    % ./kindlize_images --help
+    % ./kindlize_images -i ~/tmp/mybook/ -o ~/tmp/mybook_kindle/ -t 190 -w 1200 -h 1600 --cleft 120 --cright 120 --ctop 150 --cbottom 150
 
 
 Make a PDF file from adjusted Images
