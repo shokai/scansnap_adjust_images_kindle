@@ -11,3 +11,4 @@ config.yaml
 *.jpg
 *.png
 *.bmp
+kindlize_images
